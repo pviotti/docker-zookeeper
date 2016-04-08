@@ -1,12 +1,13 @@
 # docker-zookeeper
 
-This project contains the files to set up a [ZooKeeper](https://zookeeper.apache.org/) cluster 
+This project contains the files to set up a 
+[ZooKeeper](https://zookeeper.apache.org/) cluster 
 with [Docker](http://docker.io).
 
 
 ## Running
 
-### Build image
+### Build Docker image
 
 ```bash
 $ git clone https://github.com/pviotti/docker-zookeeper.git
@@ -14,16 +15,15 @@ $ cd docker-zookeeper
 $ make build
 ```
 
-### Environmental variables
+### Launch cluster
+
+Environmental variables:
 
 - `DOCKER_ZK_CLUSTER_SIZE` – The number of nodes in your ZooKeeper cluster
   (default: `3`)
-  
-
-### Launch cluster
-
+ 
 ```bash
-$ make start-cluster
+$ make start
 ./start-cluster.sh
 
 Bringing up cluster nodes:
@@ -33,7 +33,7 @@ Started zookeeper2 (172.18.0.3)
 Started zookeeper3 (172.18.0.4)
 ```
 
-### Testing
+### Test
 
 ```bash
 $ make test
@@ -43,7 +43,7 @@ $ make test
 172.18.0.4:2181 Mode: follower
 ```
 
-### Stop and destroying
+### Stop and destroy
 
 ```bash
 $ make stop
@@ -55,9 +55,9 @@ Stopped the cluster and cleared all of the running containers.
 
 License: Apache 2.0.  
 
-Credits:  
-for this project I took some pieces of scripts and settings from 
-[jplock/docker-zookeeper](https://github.com/jplock/docker-zookeeper) (which is nice but just for a single Zk host), 
-[mesoscloud/zookeeper](https://github.com/mesoscloud/zookeeper) (which uses Ubuntu as base image and it's unmantained)
-and [docker-riak](https://github.com/hectcastro/docker-riak).
+For this project I took some pieces of scripts and settings from
+
+ - [jplock/docker-zookeeper](https://github.com/jplock/docker-zookeeper) (which is nice but just for a single Zk host)
+ - [mesoscloud/zookeeper](https://github.com/mesoscloud/zookeeper) (which uses Ubuntu as base image and it's unmantained)
+ - [docker-riak](https://github.com/hectcastro/docker-riak)
 
