@@ -1,9 +1,8 @@
 # docker-zookeeper
 
-This project contains the files to set up a 
-[ZooKeeper](https://zookeeper.apache.org/) cluster 
-with [Docker](http://docker.io).
+This project contains the files to set up a [ZooKeeper](https://zookeeper.apache.org/) cluster with [Docker](http://docker.io).
 
+Image on Docker Hub: https://hub.docker.com/r/pviotti/zookeeper/
 
 ## Running
 
