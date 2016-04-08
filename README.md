@@ -59,5 +59,5 @@ For this project I took some pieces of scripts and settings from
 
  - [jplock/docker-zookeeper](https://github.com/jplock/docker-zookeeper) (which is nice but just for a single Zk host)
  - [mesoscloud/zookeeper](https://github.com/mesoscloud/zookeeper) (which uses Ubuntu as base image and it's unmantained)
- - [docker-riak](https://github.com/hectcastro/docker-riak)
+ - [hectcastro/docker-riak](https://github.com/hectcastro/docker-riak)
 
