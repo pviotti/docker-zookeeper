@@ -1,4 +1,4 @@
-# docker-zookeeper
+# docker-zookeeper [![](https://images.microbadger.com/badges/image/pviotti/zookeeper.svg)](https://microbadger.com/images/pviotti/zookeeper)
 
 This project contains the files to set up a [ZooKeeper](https://zookeeper.apache.org/) cluster with [Docker](http://docker.io).
 
