@@ -1,7 +1,7 @@
 .PHONY: build start test stop
 
 build:
-	docker build -t "pviotti/zookeeper" .
+	docker build -t "pviotti/zookeeper:3.4.9" .
 
 start:
 	./start-cluster.sh

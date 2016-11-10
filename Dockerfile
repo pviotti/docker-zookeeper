@@ -1,12 +1,12 @@
 FROM java:openjdk-8-jre-alpine
 MAINTAINER Paolo Viotti <paolo.viotti@gmail.com>
 
-LABEL name="zookeeper" version="3.4.8"
+ENV zkversion 3.4.9
 
 RUN apk add --no-cache wget bash gawk \
     && mkdir /opt \
-    && wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.8/zookeeper-3.4.8.tar.gz | tar -xzf - -C /opt \
-    && mv /opt/zookeeper-3.4.8 /opt/zookeeper \
+    && wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-$zkversion/zookeeper-$zkversion.tar.gz | tar -xzf - -C /opt \
+    && mv /opt/zookeeper-$zkversion /opt/zookeeper \
     && mkdir -p /tmp/zookeeper
 
 EXPOSE 2181 2888 3888

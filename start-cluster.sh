@@ -1,8 +1,11 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 set -e
 
-DOCKER_ZK_CLUSTER_SIZE=${DOCKER_ZK_CLUSTER_SIZE:-3}
+ZK_VERSION=3.4.9
+ZK_CLUSTER_SIZE=${ZK_CLUSTER_SIZE:-3}
+SERVERS=$(for i in `seq 1 $ZK_CLUSTER_SIZE`; do echo -n zookeeper$i,; done)
+SERVERS=${SERVERS%,}
 
 if docker ps -a | grep "pviotti/zookeeper" >/dev/null; then
   echo -e "\nIt looks like you already have some ZooKeeper containers running."
@@ -16,16 +19,16 @@ echo -e "\nBringing up cluster nodes:\n"
 
 docker network create zk >/dev/null 2>&1
 
-for index in $(seq "1" "${DOCKER_ZK_CLUSTER_SIZE}");
+for i in `seq 1 $ZK_CLUSTER_SIZE`;
 do
-	docker run  -e "MYID=${index}" \
-                -e "SERVERS=zookeeper1,zookeeper2,zookeeper3" \
-                -h "zookeeper${index}" \
-                --net="zk" \
-                --name="zookeeper${index}" \
-                -d pviotti/zookeeper:3.4.8 > /dev/null 2>&1
-  
-  CONTAINER_IP=$(docker inspect -f '{{.NetworkSettings.Networks.zk.IPAddress}}' "zookeeper${index}")
-  echo "Started zookeeper${index} (${CONTAINER_IP})"
+  docker run  -e "MYID=$i" \
+              -e "SERVERS=$SERVERS" \
+              -h "zookeeper$i" \
+              --net="zk" \
+              --name="zookeeper$i" \
+              -d pviotti/zookeeper:$ZK_VERSION > /dev/null 2>&1
+
+  ZK_IP=`docker inspect -f '{{.NetworkSettings.Networks.zk.IPAddress}}' "zookeeper$i"`
+  echo "Started zookeeper$i ($ZK_IP)"
 done
 

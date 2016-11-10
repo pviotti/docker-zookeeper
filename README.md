@@ -18,7 +18,7 @@ $ make build
 
 Environmental variables:
 
-- `DOCKER_ZK_CLUSTER_SIZE` – The number of nodes in your ZooKeeper cluster
+- `ZK_CLUSTER_SIZE` – The number of nodes in your ZooKeeper cluster
   (default: `3`)
  
 ```bash
