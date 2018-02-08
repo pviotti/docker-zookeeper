@@ -1,7 +1,7 @@
 FROM java:openjdk-8-jre-alpine
 MAINTAINER Paolo Viotti <paolo.viotti@gmail.com>
 
-ENV zkversion 3.4.9
+ENV zkversion 3.4.11
 
 RUN apk add --no-cache wget bash gawk \
     && mkdir /opt \

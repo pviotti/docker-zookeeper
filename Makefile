@@ -1,7 +1,8 @@
 .PHONY: build start test stop
 
 build:
-	docker build -t "pviotti/zookeeper:3.4.9" .
+	VERSION=$$(cat Dockerfile | grep "ENV zkversion" | cut -d" " -f3); \
+	docker build -t "pviotti/zookeeper:$${VERSION}" .
 
 start:
 	./start-cluster.sh

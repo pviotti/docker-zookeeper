@@ -2,7 +2,7 @@
 
 set -e
 
-ZK_VERSION=3.4.9
+ZK_VERSION=$(cat Dockerfile | grep "ENV zkversion" | cut -d" " -f3)
 ZK_CLUSTER_SIZE=${ZK_CLUSTER_SIZE:-3}
 SERVERS=$(for i in `seq 1 $ZK_CLUSTER_SIZE`; do echo -n zookeeper$i,; done)
 SERVERS=${SERVERS%,}
@@ -17,7 +17,9 @@ fi
 
 echo -e "\nBringing up cluster nodes:\n"
 
-docker network create zk >/dev/null 2>&1
+if ! docker network ls | grep zk >/dev/null ; then
+    docker network create zk >/dev/null 2>&1
+fi
 
 for i in `seq 1 $ZK_CLUSTER_SIZE`;
 do
